@@ -224,6 +224,18 @@ If you have any questions or issues, please:
 2. Create a new issue with a clear description
 3. Include code examples and expected vs actual behavior
 
+## ⭐ Star History
+
+## Star History
+
+<a href="https://www.star-history.com/#max-programming/typed-id&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=max-programming/typed-id&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=max-programming/typed-id&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=max-programming/typed-id&type=Date" />
+ </picture>
+</a>
+
 ---
 
 Made with ❤️ and TypeScript
