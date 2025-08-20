@@ -61,7 +61,7 @@ jobs:
 
       - name: Update package.json version
         run: |
-          bun run --bun -- -e "
+          bun -e "
             const pkg = require('./package.json');
             pkg.version = '${{ steps.get_version.outputs.version }}';
             require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
