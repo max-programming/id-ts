@@ -37,6 +37,13 @@
       "import": "./dist/validators/zod.js"
     }
   },
+  "typesVersions": {
+    "*": {
+      "validators/zod": [
+        "dist/validators/zod.d.ts"
+      ]
+    }
+  },
   "type": "module",
   "scripts": {
     "build": "tsup",
