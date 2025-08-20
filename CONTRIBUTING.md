@@ -1,6 +1,6 @@
-# Contributing to id-ts
+# Contributing to typed-id
 
-Thank you for considering contributing to id-ts! 🎉 We welcome contributions from everyone, whether you're fixing a bug, adding a feature, improving documentation, or just asking questions.
+Thank you for considering contributing to typed-id! 🎉 We welcome contributions from everyone, whether you're fixing a bug, adding a feature, improving documentation, or just asking questions.
 
 ## 📋 Table of Contents
 
@@ -57,8 +57,8 @@ This project and everyone participating in it is governed by our Code of Conduct
 
 ```bash
 # 1. Fork the repository on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/id-ts.git
-cd id-ts
+git clone https://github.com/YOUR_USERNAME/typed-id.git
+cd typed-id
 
 # 2. Install dependencies
 bun install
@@ -72,7 +72,7 @@ bun test
 ### Project Structure
 
 ```
-id-ts/
+typed-id/
 ├── src/                 # Source code
 │   ├── id-helper.ts    # Main IdHelper class
 │   ├── types.ts        # Type definitions
@@ -297,4 +297,4 @@ We appreciate all contributions, no matter how small! Contributors will be:
 
 ---
 
-Thank you for contributing to id-ts! Together, we can make type-safe ID generation better for everyone. 🚀
+Thank you for contributing to typed-id! Together, we can make type-safe ID generation better for everyone. 🚀

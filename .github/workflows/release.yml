@@ -97,7 +97,7 @@ jobs:
           fi
 
           echo "" >> CHANGELOG.md
-          echo "**Full Changelog**: https://github.com/max-programming/id-ts/compare/${LAST_TAG:-$(git rev-list --max-parents=0 HEAD)}...${{ steps.get_version.outputs.tag }}" >> CHANGELOG.md
+          echo "**Full Changelog**: https://github.com/max-programming/typed-id/compare/${LAST_TAG:-$(git rev-list --max-parents=0 HEAD)}...${{ steps.get_version.outputs.tag }}" >> CHANGELOG.md
 
           # Set changelog content for release
           {
@@ -137,6 +137,6 @@ jobs:
 
       - name: Notify
         run: |
-          echo "🎉 Successfully released id-ts v${{ steps.get_version.outputs.version }} with Bun!"
-          echo "📦 Published to npm: https://www.npmjs.com/package/id-ts"
-          echo "🏷️ GitHub Release: https://github.com/max-programming/id-ts/releases/tag/v${{ steps.get_version.outputs.version }}"
+          echo "🎉 Successfully released typed-id v${{ steps.get_version.outputs.version }} with Bun!"
+          echo "📦 Published to npm: https://www.npmjs.com/package/typed-id"
+          echo "🏷️ GitHub Release: https://github.com/max-programming/typed-id/releases/tag/v${{ steps.get_version.outputs.version }}"

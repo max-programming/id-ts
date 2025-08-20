@@ -1,6 +1,6 @@
-# id-ts
+# typed-id
 
-![npm version](https://img.shields.io/npm/v/id-ts) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white) ![License](https://img.shields.io/npm/l/id-ts) ![Test Status](https://img.shields.io/github/actions/workflow/status/max-programming/id-ts/test.yml?branch=main)
+![npm version](https://img.shields.io/npm/v/typed-id) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white) ![License](https://img.shields.io/npm/l/typed-id) ![Test Status](https://img.shields.io/github/actions/workflow/status/max-programming/typed-id/test.yml?branch=main)
 
 A lightweight, type-safe TypeScript library for generating prefixed IDs with customizable options. Perfect for creating consistent, identifiable IDs across your application (e.g., `user_abc123xyz`, `order_def456uvw`).
 
@@ -17,13 +17,13 @@ A lightweight, type-safe TypeScript library for generating prefixed IDs with cus
 ## 🚀 Installation
 
 ```bash
-npm install id-ts
+npm install typed-id
 # or
-yarn add id-ts
+yarn add typed-id
 # or
-pnpm add id-ts
+pnpm add typed-id
 # or
-bun add id-ts
+bun add typed-id
 ```
 
 ### Optional Dependencies
@@ -39,7 +39,7 @@ npm install zod
 ### Basic Usage
 
 ```typescript
-import { IdHelper } from "id-ts";
+import { IdHelper } from "typed-id";
 
 // Create an ID helper for users
 const userIdHelper = new IdHelper("user");
@@ -63,7 +63,7 @@ console.log(orderId); // "order::A1B2C3D4E5F6" (example output)
 ### Advanced Examples
 
 ```typescript
-import { IdHelper } from "id-ts";
+import { IdHelper } from "typed-id";
 
 // Different ID types for your application
 const userIds = new IdHelper("user");
@@ -82,11 +82,11 @@ const session = sessionIds.generate(); // "session_a1b2c3d4e5f67890"
 
 ## 🔍 Zod Integration
 
-If you're using Zod for validation, id-ts provides built-in schema creators:
+If you're using Zod for validation, typed-id provides built-in schema creators:
 
 ```typescript
-import { IdHelper } from "id-ts";
-import { createZodIdSchema } from "id-ts/validators/zod";
+import { IdHelper } from "typed-id";
+import { createZodIdSchema } from "typed-id/validators/zod";
 
 const userIdHelper = new IdHelper("user");
 const userIdSchema = createZodIdSchema(userIdHelper);
@@ -164,8 +164,8 @@ type GeneratedID<P extends string, S extends string> = `${P}${S}${string}`;
 
 ```bash
 # Clone the repository
-git clone https://github.com/max-programming/id-ts.git
-cd id-ts
+git clone https://github.com/max-programming/typed-id.git
+cd typed-id
 
 # Install dependencies
 bun install
@@ -220,7 +220,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If you have any questions or issues, please:
 
-1. Check the [existing issues](https://github.com/max-programming/id-ts/issues)
+1. Check the [existing issues](https://github.com/max-programming/typed-id/issues)
 2. Create a new issue with a clear description
 3. Include code examples and expected vs actual behavior
 

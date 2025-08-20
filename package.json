@@ -1,17 +1,17 @@
 {
-  "name": "id-ts",
+  "name": "typed-id",
   "version": "1.1.3",
   "description": "A lightweight, type-safe TypeScript library for generating prefixed IDs with customizable options",
   "author": "Max Programming",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/max-programming/id-ts.git"
+    "url": "git+https://github.com/max-programming/typed-id.git"
   },
   "bugs": {
-    "url": "https://github.com/max-programming/id-ts/issues"
+    "url": "https://github.com/max-programming/typed-id/issues"
   },
-  "homepage": "https://github.com/max-programming/id-ts#readme",
+  "homepage": "https://github.com/max-programming/typed-id#readme",
   "keywords": [
     "id",
     "uuid",

@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "id-ts",
+      "name": "typed-id",
       "dependencies": {
         "nanoid": "^5.1.5",
       },
