@@ -8,12 +8,8 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Test with Bun
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18, 20, 22]
 
     steps:
       - name: Checkout code
@@ -52,9 +48,15 @@ jobs:
           fi
           echo "Build artifacts verified successfully"
 
-  # Test with Node.js as well to ensure compatibility
-  test-node:
-    name: Test with Node.js
+      - name: Test package installation
+        run: |
+          # Pack the package to test it can be installed
+          bun pm pack
+          echo "Package packed successfully"
+
+  # Test Node.js compatibility without npm caching issues
+  test-node-compat:
+    name: Test Node.js Compatibility
     runs-on: ubuntu-latest
 
     strategy:
@@ -69,16 +71,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          # Remove cache to avoid bun.lock vs package-lock.json conflicts
 
-      - name: Install dependencies
+      - name: Create package-lock.json for npm
+        run: |
+          # Create a temporary package-lock for npm compatibility test
+          npm install --package-lock-only
+
+      - name: Install dependencies with npm
         run: npm ci
 
-      - name: Run tests
+      - name: Run tests with npm
         run: npm test
 
-      - name: Type check
+      - name: Type check with npm
         run: npx tsc --noEmit
 
-      - name: Build package
+      - name: Build package with npm
         run: npm run build

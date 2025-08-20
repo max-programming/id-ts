@@ -1,6 +1,27 @@
 {
   "name": "id-ts",
   "version": "1.0.0",
+  "description": "A lightweight, type-safe TypeScript library for generating prefixed IDs with customizable options",
+  "author": "Max Programming",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/max-programming/id-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/max-programming/id-ts/issues"
+  },
+  "homepage": "https://github.com/max-programming/id-ts#readme",
+  "keywords": [
+    "id",
+    "uuid",
+    "nanoid",
+    "typescript",
+    "prefixed-ids",
+    "type-safe",
+    "id-generation",
+    "unique-id"
+  ],
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -17,10 +38,11 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "release": "npm run test:run && npm run build && npm version",
-    "release:patch": "npm run release patch && git push && git push --tags",
-    "release:minor": "npm run release minor && git push && git push --tags",
-    "release:major": "npm run release major && git push && git push --tags"
+    "publish:dry": "bun publish --dry-run",
+    "release": "bun test:run && bun run build",
+    "release:patch": "bun run release && bun version patch && git push && git push --tags",
+    "release:minor": "bun run release && bun version minor && git push && git push --tags",
+    "release:major": "bun run release && bun version major && git push && git push --tags"
   },
   "files": [
     "dist",
@@ -45,21 +67,5 @@
     "zod": {
       "optional": true
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/max-programming/id-ts"
-  },
-  "homepage": "https://github.com/max-programming/id-ts#readme",
-  "bugs": {
-    "url": "https://github.com/max-programming/id-ts/issues"
-  },
-  "keywords": [
-    "id",
-    "nanoid",
-    "unique",
-    "identifier",
-    "prefix"
-  ],
-  "license": "MIT"
+  }
 }

@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    name: Release and Publish
+    name: Release and Publish with Bun
     runs-on: ubuntu-latest
     permissions:
       contents: write # Needed to create releases
@@ -67,16 +67,15 @@ jobs:
             require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2) + '\n');
           "
 
-      - name: Setup Node.js for npm publishing
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          registry-url: "https://registry.npmjs.org"
+      - name: Verify package can be packed
+        run: |
+          bun publish --dry-run
+          echo "Package dry-run successful"
 
-      - name: Publish to npm
-        run: npm publish --provenance --access public
+      - name: Publish to npm with Bun
+        run: bun publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Generate changelog
         id: changelog
@@ -136,6 +135,6 @@ jobs:
 
       - name: Notify
         run: |
-          echo "🎉 Successfully released id-ts v${{ steps.get_version.outputs.version }}"
+          echo "🎉 Successfully released id-ts v${{ steps.get_version.outputs.version }} with Bun!"
           echo "📦 Published to npm: https://www.npmjs.com/package/id-ts"
           echo "🏷️ GitHub Release: https://github.com/max-programming/id-ts/releases/tag/v${{ steps.get_version.outputs.version }}"
