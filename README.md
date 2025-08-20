@@ -1,6 +1,6 @@
 # typed-id
 
-![npm version](https://img.shields.io/npm/v/typed-id) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white) ![License](https://img.shields.io/npm/l/typed-id) ![Test Status](https://img.shields.io/github/actions/workflow/status/max-programming/typed-id/test.yml?branch=main)
+![npm version](https://img.shields.io/npm/v/typed-id) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white) ![License](https://img.shields.io/npm/l/typed-id) ![Test Status](https://img.shields.io/github/actions/workflow/status/max-programming/typed-id/.github/workflows/ci.yml?branch=main)
 
 A lightweight, type-safe TypeScript library for generating prefixed IDs with customizable options. Perfect for creating consistent, identifiable IDs across your application (e.g., `user_abc123xyz`, `order_def456uvw`).
 
