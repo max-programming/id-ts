@@ -80,6 +80,36 @@ const post = postIds.generate(); // "post-ab12cd34"
 const session = sessionIds.generate(); // "session_a1b2c3d4e5f67890"
 ```
 
+### Type Inference with InferId
+
+You can use the `InferId` utility type to extract the generated ID type from your `IdHelper` instances:
+
+```typescript
+import { IdHelper, type InferId } from "typed-id";
+
+// Create ID helper instances
+const userIdHelper = new IdHelper("user");
+const orderIdHelper = new IdHelper("order", { separator: "::" });
+
+// Infer the types that would be generated
+type UserId = InferId<typeof userIdHelper>; // "user_${string}"
+type OrderId = InferId<typeof orderIdHelper>; // "order::${string}"
+
+// Use the inferred types in your application
+function processUser(id: UserId) {
+  // id is guaranteed to be a user ID with the correct format
+  console.log(`Processing user: ${id}`);
+}
+
+// This will work
+const userId = userIdHelper.generate();
+processUser(userId); // ✅ Type-safe
+
+// This would cause a TypeScript error
+const orderId = orderIdHelper.generate();
+// processUser(orderId); // ❌ Type error: Argument of type 'OrderId' is not assignable to parameter of type 'UserId'
+```
+
 ## 🔍 Zod Integration
 
 If you're using Zod for validation, typed-id provides built-in schema creators:
@@ -151,6 +181,47 @@ type Options<S extends string | undefined = undefined> = {
 
 ```typescript
 type GeneratedID<P extends string, S extends string> = `${P}${S}${string}`;
+```
+
+#### `InferId<T>`
+
+A utility type that infers the generated ID type from an `IdHelper` instance type. This is useful for type-level programming and ensuring type consistency across your application.
+
+```typescript
+type InferId<T extends IdHelper<string, string>> = T extends IdHelper<
+  infer P,
+  infer S
+>
+  ? GeneratedId<P, SeparatorOrDefault<S>>
+  : never;
+```
+
+**Usage Example:**
+
+```typescript
+import { IdHelper, InferId } from "typed-id";
+
+// Create ID helper instances
+const userIdHelper = new IdHelper("user");
+const orderIdHelper = new IdHelper("order", { separator: "::" });
+
+// Infer the types that would be generated
+type UserId = InferId<typeof userIdHelper>; // "user_${string}"
+type OrderId = InferId<typeof orderIdHelper>; // "order::${string}"
+
+// Use the inferred types in your application
+function processUser(id: UserId) {
+  // id is guaranteed to be a user ID with the correct format
+  console.log(`Processing user: ${id}`);
+}
+
+// This will work
+const userId = userIdHelper.generate();
+processUser(userId); // ✅ Type-safe
+
+// This would cause a TypeScript error
+const orderId = orderIdHelper.generate();
+// processUser(orderId); // ❌ Type error: Argument of type 'OrderId' is not assignable to parameter of type 'UserId'
 ```
 
 ## 🛠️ Development

@@ -29,3 +29,10 @@ export class IdHelper<
     >;
   }
 }
+
+export type InferId<T extends IdHelper<string, string>> = T extends IdHelper<
+  infer P,
+  infer S
+>
+  ? GeneratedId<P, SeparatorOrDefault<S>>
+  : never;
