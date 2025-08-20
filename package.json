@@ -45,5 +45,21 @@
     "zod": {
       "optional": true
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/max-programming/id-ts"
+  },
+  "homepage": "https://github.com/max-programming/id-ts#readme",
+  "bugs": {
+    "url": "https://github.com/max-programming/id-ts/issues"
+  },
+  "keywords": [
+    "id",
+    "nanoid",
+    "unique",
+    "identifier",
+    "prefix"
+  ],
+  "license": "MIT"
 }
