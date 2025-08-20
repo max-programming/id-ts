@@ -30,6 +30,11 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
+    },
+    "./validators/zod": {
+      "types": "./dist/validators/zod.d.ts",
+      "require": "./dist/validators/zod.cjs",
+      "import": "./dist/validators/zod.js"
     }
   },
   "type": "module",
