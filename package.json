@@ -1,0 +1,49 @@
+{
+  "name": "id-ts",
+  "version": "1.0.0",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "release": "npm run test:run && npm run build && npm version",
+    "release:patch": "npm run release patch && git push && git push --tags",
+    "release:minor": "npm run release minor && git push && git push --tags",
+    "release:major": "npm run release major && git push && git push --tags"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^24.3.0",
+    "@vitest/ui": "^3.2.4",
+    "tsup": "^8.5.0",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5",
+    "zod": "^4.0.17"
+  },
+  "dependencies": {
+    "nanoid": "^5.1.5"
+  },
+  "peerDependenciesMeta": {
+    "zod": {
+      "optional": true
+    }
+  }
+}
