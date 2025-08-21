@@ -12,6 +12,7 @@ A lightweight, type-safe TypeScript library for generating prefixed IDs with cus
 - 📦 **Lightweight** - Minimal dependencies (only `nanoid`)
 - 🔍 **Zod Integration** - Built-in Zod validation schemas (optional)
 - ✅ **Valibot Integration** - Built-in Valibot validation schemas (optional)
+- 🏛️ **ArkType Integration** - Built-in ArkType validation schemas (optional)
 - 🧪 **Well Tested** - Comprehensive test coverage
 - 📚 **Modern ESM** - ES modules with CommonJS support
 
@@ -25,20 +26,6 @@ yarn add typed-id
 pnpm add typed-id
 # or
 bun add typed-id
-```
-
-### Optional Dependencies
-
-For Zod validation support:
-
-```bash
-npm install zod
-```
-
-For Valibot validation support:
-
-```bash
-npm install valibot
 ```
 
 ## 📖 Usage
@@ -117,7 +104,17 @@ const orderId = orderIdHelper.generate();
 // processUser(orderId); // ❌ Type error: Argument of type 'OrderId' is not assignable to parameter of type 'UserId'
 ```
 
-## 🔍 Zod Integration
+## 🔧 Integrations
+
+Typed-id provides seamless integration with popular TypeScript validation libraries. Choose the one that fits your project's needs.
+
+### 🔍 Zod Integration
+
+First, install Zod if you haven't already:
+
+```bash
+npm install zod
+```
 
 If you're using Zod for validation, typed-id provides built-in schema creators:
 
@@ -143,7 +140,13 @@ const userSchema = z.object({
 });
 ```
 
-## ✅ Valibot Integration
+### ✅ Valibot Integration
+
+First, install Valibot if you haven't already:
+
+```bash
+npm install valibot
+```
 
 If you're using Valibot for validation, typed-id provides built-in schema creators:
 
@@ -168,6 +171,87 @@ const userSchema = object({
   name: string(),
   email: string([email()]),
 });
+```
+
+### 🏛️ ArkType Integration
+
+First, install ArkType if you haven't already:
+
+```bash
+npm install arktype
+```
+
+If you're using ArkType for validation, typed-id provides built-in schema creators:
+
+```typescript
+import { IdHelper } from "typed-id";
+import { createArkTypeIdSchema } from "typed-id/validators/arktype";
+import { ArkErrors } from "arktype";
+
+const userIdHelper = new IdHelper("user");
+const userIdSchema = createArkTypeIdSchema(userIdHelper);
+
+// Validate IDs
+const validId = userIdHelper.generate();
+const validResult = userIdSchema(validId);
+console.log(validResult); // Returns the actual ID string if valid
+
+const invalidResult = userIdSchema("invalid_id");
+console.log(invalidResult instanceof ArkErrors); // true if invalid
+
+// Use in your ArkType schemas
+import { type } from "arktype";
+
+const userSchema = type({
+  id: userIdSchema,
+  name: "string",
+  email: "string.email",
+});
+
+// Type-safe validation
+const result = userSchema({
+  id: userIdHelper.generate(),
+  name: "John Doe",
+  email: "john@example.com",
+});
+
+if (result instanceof ArkErrors) {
+  console.log("Validation failed:", result.summary);
+} else {
+  console.log("Valid user:", result); // Fully typed user object
+}
+```
+
+#### Custom Validation Examples
+
+```typescript
+import { IdHelper } from "typed-id";
+import { createArkTypeIdSchema } from "typed-id/validators/arktype";
+
+// Different ID helpers with custom configurations
+const orderIdHelper = new IdHelper("order", {
+  separator: "::",
+  length: 12,
+  customAlphabets: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+});
+
+const sessionIdHelper = new IdHelper("session", {
+  separator: "_",
+  length: 16,
+  customAlphabets: "0123456789abcdef", // Hex only
+});
+
+// Create corresponding schemas
+const orderIdSchema = createArkTypeIdSchema(orderIdHelper);
+const sessionIdSchema = createArkTypeIdSchema(sessionIdHelper);
+
+// Validate different ID formats
+const orderId = orderIdHelper.generate(); // "order::ABC123DEF456"
+const sessionId = sessionIdHelper.generate(); // "session_a1b2c3d4e5f6789a"
+
+console.log(orderIdSchema(orderId)); // Valid: returns the ID
+console.log(sessionIdSchema(sessionId)); // Valid: returns the ID
+console.log(orderIdSchema(sessionId) instanceof ArkErrors); // true - wrong format
 ```
 
 ## ⚙️ Configuration Options
@@ -300,6 +384,7 @@ This library has comprehensive test coverage including:
 - ID generation with custom options
 - Zod validation schemas
 - Valibot validation schemas
+- ArkType validation schemas
 - Type safety verification
 
 Run tests:
