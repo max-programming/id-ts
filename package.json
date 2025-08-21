@@ -65,12 +65,14 @@
     "@types/bun": "latest",
     "@types/node": "^24.3.0",
     "@vitest/ui": "^3.2.4",
+    "arktype": "^2.1.20",
     "tsup": "^8.5.0",
     "valibot": "^1.1.0",
     "vitest": "^3.2.4",
     "zod": "^4.0.17"
   },
   "peerDependencies": {
+    "arktype": "^2.1.20",
     "typescript": "^5",
     "valibot": "^1.1.0",
     "zod": "^4.0.17"
@@ -79,6 +81,9 @@
     "nanoid": "^5.1.5"
   },
   "peerDependenciesMeta": {
+    "arktype": {
+      "optional": true
+    },
     "valibot": {
       "optional": true
     },
