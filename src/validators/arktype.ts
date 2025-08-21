@@ -1,6 +1,7 @@
 import { IdHelper } from "../id-helper";
-import { Type, type } from "arktype";
+import { type } from "arktype";
 import type { GeneratedId, SeparatorOrDefault } from "../types";
+import type { Type } from "arktype";
 
 export function createArkTypeIdSchema<
   P extends string,
