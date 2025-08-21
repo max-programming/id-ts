@@ -16,9 +16,11 @@
       },
       "peerDependencies": {
         "typescript": "^5",
+        "valibot": "^1.1.0",
         "zod": "^4.0.17",
       },
       "optionalPeers": [
+        "valibot",
         "zod",
       ],
     },

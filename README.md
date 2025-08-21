@@ -11,6 +11,7 @@ A lightweight, type-safe TypeScript library for generating prefixed IDs with cus
 - ⚙️ **Highly Customizable** - Configure separators, length, and character sets
 - 📦 **Lightweight** - Minimal dependencies (only `nanoid`)
 - 🔍 **Zod Integration** - Built-in Zod validation schemas (optional)
+- ✅ **Valibot Integration** - Built-in Valibot validation schemas (optional)
 - 🧪 **Well Tested** - Comprehensive test coverage
 - 📚 **Modern ESM** - ES modules with CommonJS support
 
@@ -32,6 +33,12 @@ For Zod validation support:
 
 ```bash
 npm install zod
+```
+
+For Valibot validation support:
+
+```bash
+npm install valibot
 ```
 
 ## 📖 Usage
@@ -133,6 +140,33 @@ const userSchema = z.object({
   id: userIdSchema,
   name: z.string(),
   email: z.string().email(),
+});
+```
+
+## ✅ Valibot Integration
+
+If you're using Valibot for validation, typed-id provides built-in schema creators:
+
+```typescript
+import { IdHelper } from "typed-id";
+import { createValibotIdSchema } from "typed-id/validators/validbot";
+import { safeParse } from "valibot";
+
+const userIdHelper = new IdHelper("user");
+const userIdSchema = createValibotIdSchema(userIdHelper);
+
+// Validate IDs
+const validId = userIdHelper.generate();
+console.log(safeParse(userIdSchema, validId).success); // true
+console.log(safeParse(userIdSchema, "invalid_id").success); // false
+
+// Use in your Valibot schemas
+import { object, string, email } from "valibot";
+
+const userSchema = object({
+  id: userIdSchema,
+  name: string(),
+  email: string([email()]),
 });
 ```
 
@@ -265,6 +299,7 @@ This library has comprehensive test coverage including:
 - ID generation with default options
 - ID generation with custom options
 - Zod validation schemas
+- Valibot validation schemas
 - Type safety verification
 
 Run tests:

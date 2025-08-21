@@ -71,12 +71,16 @@
   },
   "peerDependencies": {
     "typescript": "^5",
+    "valibot": "^1.1.0",
     "zod": "^4.0.17"
   },
   "dependencies": {
     "nanoid": "^5.1.5"
   },
   "peerDependenciesMeta": {
+    "valibot": {
+      "optional": true
+    },
     "zod": {
       "optional": true
     }
