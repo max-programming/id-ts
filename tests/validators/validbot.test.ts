@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { safeParse } from "valibot";
 import { IdHelper } from "../../src";
-import { createValibotIdSchema } from "../../src/validators/validbot";
+import { createValibotIdSchema } from "../../src/validators";
 
 describe("Valibot ID Validator", () => {
   it("should validate ID with default options", () => {
