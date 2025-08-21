@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { IdHelper } from "../../src";
-import { createArktypeIdSchema } from "../../src/validators/arktype";
+import { createArktypeIdSchema } from "../../src/validators";
 import { ArkErrors } from "arktype";
 
 describe("Arktype ID Validator", () => {
