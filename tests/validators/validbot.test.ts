@@ -12,16 +12,16 @@ describe("Valibot ID Validator", () => {
     const schema = createValibotIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
-    expect(safeParse(schema, id)).toBe(true);
+    expect(safeParse(schema, id).success).toBe(true);
 
     // Test that the schema rejects IDs with different prefix
-    expect(safeParse(schema, "person_0123456789")).toBe(false);
+    expect(safeParse(schema, "person_0123456789").success).toBe(false);
 
     // Test that the schema rejects IDs with different separator
-    expect(safeParse(schema, "user::0123456789")).toBe(false);
+    expect(safeParse(schema, "user::0123456789").success).toBe(false);
 
     // Test that the schema rejects IDs with different length
-    expect(safeParse(schema, "user_1234")).toBe(false);
+    expect(safeParse(schema, "user_1234").success).toBe(false);
   });
 
   it("should validate ID with custom options", () => {
@@ -36,19 +36,19 @@ describe("Valibot ID Validator", () => {
     const schema = createValibotIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
-    expect(safeParse(schema, id)).toBe(true);
+    expect(safeParse(schema, id).success).toBe(true);
 
     // Test that the schema rejects IDs with different prefix
-    expect(safeParse(schema, "person::abcdefghijkl")).toBe(false);
+    expect(safeParse(schema, "person::abcdefghijkl").success).toBe(false);
 
     // Test that the schema rejects IDs with different separator
-    expect(safeParse(schema, "user_abcdefghijkl")).toBe(false);
+    expect(safeParse(schema, "user_abcdefghijkl").success).toBe(false);
 
     // Test that the schema rejects IDs with different length
-    expect(safeParse(schema, "user::abcdefghijk")).toBe(false);
+    expect(safeParse(schema, "user::abcdefghijk").success).toBe(false);
 
     // Test that the schema rejects IDs with different alphabets
-    expect(safeParse(schema, "user::0123456789123")).toBe(false);
+    expect(safeParse(schema, "user::0123456789123").success).toBe(false);
   });
 
   it("should validate ID with custom separator", () => {
@@ -59,13 +59,13 @@ describe("Valibot ID Validator", () => {
     const schema = createValibotIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
-    expect(safeParse(schema, id)).toBe(true);
+    expect(safeParse(schema, id).success).toBe(true);
 
     // Test that the schema rejects IDs with different prefix
-    expect(safeParse(schema, "person::0123456789")).toBe(false);
+    expect(safeParse(schema, "person::0123456789").success).toBe(false);
 
     // Test that the schema rejects IDs with different separator
-    expect(safeParse(schema, "user_0123456789")).toBe(false);
+    expect(safeParse(schema, "user_0123456789").success).toBe(false);
   });
 
   it("should validate ID with custom length", () => {
@@ -76,13 +76,13 @@ describe("Valibot ID Validator", () => {
     const schema = createValibotIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
-    expect(safeParse(schema, id)).toBe(true);
+    expect(safeParse(schema, id).success).toBe(true);
 
     // Test that the schema rejects IDs with different prefix
-    expect(safeParse(schema, "person_0123456789")).toBe(false);
+    expect(safeParse(schema, "person_0123456789").success).toBe(false);
 
     // Test that the schema rejects IDs with different length
-    expect(safeParse(schema, "user_0123456789")).toBe(false);
+    expect(safeParse(schema, "user_0123456789").success).toBe(false);
   });
 
   it("should validate ID with custom alphabets", () => {
@@ -95,12 +95,12 @@ describe("Valibot ID Validator", () => {
     const schema = createValibotIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
-    expect(safeParse(schema, id)).toBe(true);
+    expect(safeParse(schema, id).success).toBe(true);
 
     // Test that the schema rejects IDs with different prefix
-    expect(safeParse(schema, "person_0123456789")).toBe(false);
+    expect(safeParse(schema, "person_0123456789").success).toBe(false);
 
     // Test that the schema rejects IDs with different alphabets
-    expect(safeParse(schema, "user_0123456789123")).toBe(false);
+    expect(safeParse(schema, "user_0123456789123").success).toBe(false);
   });
 });
