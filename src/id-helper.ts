@@ -12,12 +12,30 @@ export class IdHelper<
 
   constructor(public prefix: P, public options: Partial<Options<S>> = {}) {}
 
-  public generate(): GeneratedId<P, SeparatorOrDefault<S>> {
+  private get optionsOrDefaults() {
     const {
       separator = IdHelper.DEFAULT_SEPARATOR,
       length = IdHelper.DEFAULT_LENGTH,
       customAlphabets = IdHelper.DEFAULT_ALPHABETS,
     } = this.options;
+
+    return {
+      separator,
+      length,
+      customAlphabets,
+    } as Options<S>;
+  }
+
+  public get regex(): RegExp {
+    const { separator, length, customAlphabets } = this.optionsOrDefaults;
+
+    return new RegExp(
+      `^${this.prefix}${separator}[${customAlphabets}]{${length}}$`
+    );
+  }
+
+  public generate(): GeneratedId<P, SeparatorOrDefault<S>> {
+    const { separator, length, customAlphabets } = this.optionsOrDefaults;
 
     const nanoid = customAlphabet(customAlphabets, length);
 
