@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { IdHelper } from "../../src";
-import { createZodIdSchema } from "../../src/validators/zod";
+import { createZodIdSchema } from "../../src/validators";
 
 describe("Zod ID Validator", () => {
   it("should validate ID with default options", () => {
