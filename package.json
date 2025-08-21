@@ -1,6 +1,6 @@
 {
   "name": "typed-id",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A lightweight, type-safe TypeScript library for generating prefixed IDs with customizable options",
   "author": "Max Programming",
   "license": "MIT",
