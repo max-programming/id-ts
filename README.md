@@ -185,11 +185,11 @@ If you're using ArkType for validation, typed-id provides built-in schema creato
 
 ```typescript
 import { IdHelper } from "typed-id";
-import { createArktypeIdSchema } from "typed-id/validators/arktype";
+import { createArkTypeIdSchema } from "typed-id/validators/arktype";
 import { ArkErrors } from "arktype";
 
 const userIdHelper = new IdHelper("user");
-const userIdSchema = createArktypeIdSchema(userIdHelper);
+const userIdSchema = createArkTypeIdSchema(userIdHelper);
 
 // Validate IDs
 const validId = userIdHelper.generate();
@@ -226,7 +226,7 @@ if (result instanceof ArkErrors) {
 
 ```typescript
 import { IdHelper } from "typed-id";
-import { createArktypeIdSchema } from "typed-id/validators/arktype";
+import { createArkTypeIdSchema } from "typed-id/validators/arktype";
 
 // Different ID helpers with custom configurations
 const orderIdHelper = new IdHelper("order", {
@@ -242,8 +242,8 @@ const sessionIdHelper = new IdHelper("session", {
 });
 
 // Create corresponding schemas
-const orderIdSchema = createArktypeIdSchema(orderIdHelper);
-const sessionIdSchema = createArktypeIdSchema(sessionIdHelper);
+const orderIdSchema = createArkTypeIdSchema(orderIdHelper);
+const sessionIdSchema = createArkTypeIdSchema(sessionIdHelper);
 
 // Validate different ID formats
 const orderId = orderIdHelper.generate(); // "order::ABC123DEF456"

@@ -1,15 +1,15 @@
 import { describe, it, expect } from "vitest";
 import { IdHelper } from "../../src";
-import { createArktypeIdSchema } from "../../src/validators";
+import { createArkTypeIdSchema } from "../../src/validators";
 import { ArkErrors } from "arktype";
 
-describe("Arktype ID Validator", () => {
+describe("ArkType ID Validator", () => {
   it("should validate ID with default options", () => {
     const userIdHelper = new IdHelper("user");
 
     const id = userIdHelper.generate();
 
-    const IdSchema = createArktypeIdSchema(userIdHelper);
+    const IdSchema = createArkTypeIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
     expect(IdSchema(id)).toBe(id);
@@ -33,7 +33,7 @@ describe("Arktype ID Validator", () => {
 
     const id = userIdHelper.generate();
 
-    const IdSchema = createArktypeIdSchema(userIdHelper);
+    const IdSchema = createArkTypeIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
     expect(IdSchema(id)).toBe(id);
@@ -56,7 +56,7 @@ describe("Arktype ID Validator", () => {
 
     const id = userIdHelper.generate();
 
-    const IdSchema = createArktypeIdSchema(userIdHelper);
+    const IdSchema = createArkTypeIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
     expect(IdSchema(id)).toBe(id);
@@ -73,7 +73,7 @@ describe("Arktype ID Validator", () => {
 
     const id = userIdHelper.generate();
 
-    const IdSchema = createArktypeIdSchema(userIdHelper);
+    const IdSchema = createArkTypeIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
     expect(IdSchema(id)).toBe(id);
@@ -92,7 +92,7 @@ describe("Arktype ID Validator", () => {
 
     const id = userIdHelper.generate();
 
-    const IdSchema = createArktypeIdSchema(userIdHelper);
+    const IdSchema = createArkTypeIdSchema(userIdHelper);
 
     // Test that the schema validates the generated ID
     expect(IdSchema(id)).toBe(id);
